@@ -18,35 +18,48 @@
 # Check if your moto_speed is within that range using boolean (&&, ||)
 # operators and comparison operators (== =< >= !=)
 
-moto_speed => ?
+moto_speed >= 20 && moto_speed <= 55
 
 # if your moto_speed variable is in the right range print out a good
 # message, aka "Wheee!" Otherwise print out an appropriate response.
 # Your code goes below:
 
-if ...
+if(moto_speed >= 20) && (moto_speed <= 55) 
+  puts "Wheee!"
+elsif (moto_speed <= 20)
+  puts "I'm falling over!"
+else 
+  puts "SCAREE!"
+end
 
 # Make a method that checks your moto speed when called
 
 def check_speed (mph)
+  if(moto_speed >= 20) && (moto_speed <= 55) 
+    puts "Wheee!"
+  elsif (moto_speed <= 20)
+	puts "I'm falling over!"
+  else 
+	puts "SCAREE!"
+  end
 end
-
 
 # Make a method to start your bike! It should print out "vrooom!"
 # when it's called
 
-# your code below:
-
+def make_vroom 
+  puts "vrooom!"
+end
 
 # You're the leader of the pack. 
 # Create an Array of motorcycle makes!
 
-my_convoy = []
+my_convoy = ['Harley', 'BMW', 'Triumph', 'Vespa']
 
 # Loop through your convoy and print out each motorcycle's make
 # Your code below:
 
-
+my_convoy.each { |moto| p moto }
 
 # You need to keep track of your gang. 
 # Create a separate Hash containing riders' info. like so:
@@ -54,27 +67,45 @@ my_convoy = []
 # Then a larger Hash containing all riders
 # my_gang = {rider hashes}
 
-my_gang = {}
+harry = { :name => "Harry", :helmet => "blue", :height => 187 }
+meg = { :name => "Megan", :helmet => "winged", :height => 176 }
+hodor = { :name => "Hodor!", :helmet => "viking", :height => 200 }
+jasper = { :name => "Jasper", :helmet => "red", :height => 165 }
+
+my_gang = { :rider1 => harry, :rider2 => meg, :rider3 => hodor, :rider4 => jasper }
 
 # Loop through your gang and print out each rider's 
 # name & helmet color using a block. Your code below:
 
+my_gang.each do |key, value|
+  puts value[:name] + " " + value[:helmet]
+end
 
 # Now for each rider add their motorcycle to their Hash, 
 # assume they are in the same order as your Array
 # use a loop. Your code below:
 
+i = 0
+my_gang.each do |key, value| 	
+  value[:moto] = my_convoy[i]
+  i += 1 
+end
 
 # Define an Class to represent each gang member 
 # It should include methods to set their name and motorcyle make
 # When say_name(name) is called the rider's name is printed out
 
-Class Rider
+class Rider
 
-  def initialize(name, moto_model)
+  attr_accessor :name
+
+  def initialize(name, model)
+  	@name = name
+  	@model = model
   end
 
-  def say_name(rider)
+  def say_name(name)
+  	puts "my name is #{name}"
   end
 end
 
@@ -84,3 +115,11 @@ end
 # 3. loop through the Hash and call say_name for each rider.
 # Hint: you will need an attr_accessor in Rider 
 # Your code below:
+
+larry = Rider.new("Larry", "BMW")
+barry = Rider.new("Barry", "Triumph")
+moe = Rider.new("Moe", "Vespa")
+
+riders = { :rider1 => larry, :rider2 => barry, :rider3 => moe }
+
+riders.each { |k, v| puts v.say_name(v.name) }
