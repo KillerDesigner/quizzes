@@ -38,9 +38,9 @@ def check_speed (mph)
   if(moto_speed >= 20) && (moto_speed <= 55) 
     puts "Wheee!"
   elsif (moto_speed <= 20)
-	puts "I'm falling over!"
+	  puts "I'm falling over!"
   else 
-	puts "SCAREE!"
+	  puts "SCAREE!"
   end
 end
 
@@ -56,6 +56,8 @@ end
 
 my_convoy = ['Harley', 'BMW', 'Triumph', 'Vespa']
 
+#alternate solution: 
+my_convoy = %w{ harley bmw triump vespa }
 # Loop through your convoy and print out each motorcycle's make
 # Your code below:
 
@@ -88,6 +90,7 @@ end
 i = 0
 my_gang.each do |key, value| 	
   value[:moto] = my_convoy[i]
+  p i
   i += 1 
 end
 
