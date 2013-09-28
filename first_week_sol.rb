@@ -18,8 +18,6 @@
 # Check if your moto_speed is within that range using boolean (&&, ||)
 # operators and comparison operators (== =< >= !=)
 
-moto_speed >= 20 && moto_speed <= 55
-
 # if your moto_speed variable is in the right range print out a good
 # message, aka "Wheee!" Otherwise print out an appropriate response.
 # Your code goes below:
