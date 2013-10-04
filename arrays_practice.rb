@@ -51,7 +51,7 @@ shoes.map { |s| s += "!" }
 # set of outfits + shoes, mapping a "!!" on the end of each
 
 outfits = outfits.shuffle
-new_shoes = shoes.shuffle.map { |s| s += '!!'}
+new_shoes = shoes.shuffle.map! { |s| s += '!!'}
 
 outfits.each do |o|
   puts "I\'m now wearing #{o} with #{new_shoes.shift}"
@@ -95,4 +95,4 @@ wardrobe.map { |w| p w += " OMFG!!"}
 
 wardrobe.map! { |w| w = "purple " + w }
 
-
+# Now use each to print out your new cultish wardrobe

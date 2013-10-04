@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title>!Quiz - Week 2</title>
+</head>
+<body>
+<center> 	
+	<h1>Puppies - wait, is that a puppy?! </h1>
+	<img id="daPuppies" src="puppies.jpg" width="300" height="auto" />
+	<h3> don't forget to open your Chrome console! </h3>
+	<button onclick="growBig();">Bigger Puppies!</button>
+	<button onclick="shrink();">Smaller Puppies!</button>
+	<button onclick="movePuppy();">Move Puppies!</button>
+	<button onclick="stopPuppy();">Stop Puppies!</button>
+</center>
+<script type="text/javascript">
+
+ //  _  ___  _   _ ___ _____
+ // | |/ _ \| | | |_ _|__  /
+ // | | | | | | | || |  / / 
+ // |_| |_| | |_| || | / /_ 
+ // (_)\__\_\\___/|___/____|
+ 
+// Week two notQuiz in JavaScript
+// Please test your answers in Chrome dev console   
+
+
+// 1. make an array of 5 puppies by name
+
+var puppies = ["Spot", "Mr Puddles", "Emma", "Zooey", "Rex"];
+
+// 2. iterate through your puppies using a for loop // & print their names
+
+for( var i = 0; i < puppies.length; i++ ) { 
+	console.log(puppies[i]); 
+}
+
+// 3. your puppies are in the wrong places!
+// create a function that swaps two elements in an 
+// array then returns the array out again
+
+function swapElements(myArray, elemA, elemB) {
+	var holder = myArray[elemA];
+	myArray[elemA] = myArray[elemB];
+	myArray[elemB] = holder;
+	return myArray;
+}
+console.log(puppies);
+puppies = swapElements(puppies, 0, 4);
+console.log(puppies);
+
+// 4. create an array of ages (type int) for all your puppies
+// then define a function that returns the average puppy age
+var puppyAges = [4, 6, 2, 3, 4];
+
+function avgPuppyAges(myArray) {
+	var sum = 0;
+	var num = myArray.length;
+	for(var i = 0; i < num; i++ ) {
+		sum += myArray[i]
+	}
+	return sum / num;
+}
+console.log(avgPuppyAges(puppyAges));
+
+// 5. sort your array of puppy ages and puppy names, and print to the console
+
+console.log(puppies.sort());
+console.log(puppyAges.sort());
+
+// 6. visit the url https://www.jasondavies.com/maps/ & open Chrome console
+// using JavaScript in the console find out how many images are on the page
+console.log(document.images.length);
+
+// 7. using JavaScript in the console find out what the width is of the 1st image
+console.log(document.images[0].width);
+
+// 8. define a function that makes your puppy image grow continuously larger and another that shrinks it, then attach these to the buttons above
+
+function growBig() {
+	document.images[0].width += 20;
+}
+function shrink() {
+	document.images[0].width -= 20;
+}
+
+// 9. define a function that moves your puppy to the right then call that function when the "move puppy" button is pushed.
+
+var puppyPic = document.getElementById('daPuppies'),
+	imageThread;
+
+function setImage(myImage) {	
+	myImage.style.position= 'relative'; 
+	myImage.style.left = '0px';
+}
+setImage(puppyPic);
+function moveImage(myImage) {		
+	myImage.style.left = parseInt(myImage.style.left) + 20 + 'px';
+
+}
+function movePuppy() {
+	imageThread=setInterval(function(){ moveImage(puppyPic) },500);
+}
+
+
+// 10. define a function that stops the puppy when 
+// the button "stop puppy" is pressed. Stop it before 
+// it gets away!
+
+function stopPuppy() {
+	clearInterval(imageThread);
+}
+
+</script>
+</html>
